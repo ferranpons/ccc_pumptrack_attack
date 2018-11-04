@@ -8,7 +8,7 @@ from menu.menulogos import MenuLogos
 from menu.settingsMenu import settings_menu
 from textUtils import text_format, MENU_FONT
 
-background_file = 'background_title.png'
+background_file = 'background_menu.png'
 menu_line_file = 'menu_line.png'
 clock = pygame.time.Clock()
 

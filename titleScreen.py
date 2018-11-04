@@ -5,7 +5,7 @@ from fileUtils import load_music, load_image
 from textUtils import text_format, MENU_FONT
 
 background_file = 'background_title.png'
-main_theme = 'A_A_Aalto_-_Admin.mp3'
+main_theme = 'Windom_Earle_-_07_-_screw_wave.mp3'
 clock = pygame.time.Clock()
 
 
@@ -14,6 +14,7 @@ def title_screen(screen, screen_rect):
 
     # Load
     background_image = load_image(background_file)
+    main_title_image = load_image('ccc_pumptrack_attack_title.png')
 
     # Main Theme
     load_music(main_theme)
@@ -29,6 +30,10 @@ def title_screen(screen, screen_rect):
         background_rect.left, background_rect.top = [0, 0]
         screen.fill([255, 255, 255])
         screen.blit(background_image, background_rect)
+
+        main_title_image_rect = main_title_image.get_rect()
+        main_title_image_rect.center = (screen_rect.size[0] / 2, screen_rect.size[1] / 2)
+        screen.blit(main_title_image, main_title_image_rect)
 
         press_any_key = text_format("Press any key to continue", MENU_FONT, 18, colors.white)
         press_any_key_rect = press_any_key.get_rect()
