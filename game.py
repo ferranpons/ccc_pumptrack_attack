@@ -4,6 +4,7 @@ import pygame
 from pygame.locals import *
 import fileUtils
 from colors import black
+from gameplay import game_play
 from imageUtils import fade_in, fade_out
 from menu.mainMenu import main_menu
 from titleScreen import title_screen
@@ -74,6 +75,7 @@ def main(window_style=0):
     splash_intro(screen)
     title_screen(screen, screen_rect)
     main_menu(screen, screen_rect)
+    #game_play(screen, screen_rect)
 
     if pygame.mixer:
         pygame.mixer.music.fadeout(1000)

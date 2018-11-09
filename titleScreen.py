@@ -32,7 +32,7 @@ def title_screen(screen, screen_rect):
         screen.blit(background_image, background_rect)
 
         main_title_image_rect = main_title_image.get_rect()
-        main_title_image_rect.center = (screen_rect.size[0] / 2, screen_rect.size[1] / 2)
+        main_title_image_rect.center = (screen_rect.size[0] / 2, screen_rect.size[1] / 2 - 80)
         screen.blit(main_title_image, main_title_image_rect)
 
         press_any_key = text_format("Press any key to continue", MENU_FONT, 18, colors.white)
