@@ -28,7 +28,7 @@ def title_screen(screen, screen_rect):
         # Draw Background
         background_rect = background_image.get_rect()
         background_rect.left, background_rect.top = [0, 0]
-        screen.fill([255, 255, 255])
+        screen.fill(colors.white)
         screen.blit(background_image, background_rect)
 
         main_title_image_rect = main_title_image.get_rect()
