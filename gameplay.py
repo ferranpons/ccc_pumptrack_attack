@@ -2,6 +2,7 @@ import pygame
 
 import fileUtils
 from player import Player
+from pumptrackWayonits import way_points
 from rider import Rider
 from score import Score
 
@@ -11,23 +12,25 @@ SCORE = 0
 def game_play(screen, screen_rect):
     # Load images, assign to sprite classes
     # (do this before the classes are used, after screen setup)
-    img = fileUtils.load_image('intro_ball.gif')
+    img = fileUtils.load_image('rider1-placeholder.png')
     Player.images = [img, pygame.transform.flip(img, 1, 0)]
-    Rider.images = fileUtils.load_images('intro_ball.gif', 'intro_ball.gif', 'intro_ball.gif')
+    #Rider.images = fileUtils.load_images('intro_ball.gif', 'intro_ball.gif', 'intro_ball.gif')
 
     # decorate the game window
-    icon = pygame.transform.scale(Rider.images[0], (32, 32))
-    pygame.display.set_icon(icon)
-    pygame.display.set_caption('Pygame Aliens')
-    pygame.mouse.set_visible(0)
+    #icon = pygame.transform.scale(Rider.images[0], (32, 32))
+    #pygame.display.set_icon(icon)
+    #pygame.display.set_caption('Pygame Aliens')
+    #pygame.mouse.set_visible(0)
 
     # create the background, tile the bgd image
-    bgdtile = fileUtils.load_image('intro_ball.gif')
-    background = pygame.Surface(screen_rect.size)
-    for x in range(0, screen_rect.width, bgdtile.get_width()):
-        background.blit(bgdtile, (x, 0))
-    screen.blit(background, (0, 0))
+    background = fileUtils.load_image('pumptrack1-placeholder.png')
+    background_rect = background.get_rect()
+    screen.blit(background, background_rect)
     pygame.display.flip()
+    #for x in range(0, screen_rect.width, bgdtile.get_width()):
+    #    background.blit(bgdtile, (x, 0))
+    #screen.blit(background, (0, 0))
+    #pygame.display.flip()
 
     # load the sound effects
     # shoot_sound = load_sound('car_door.wav')
@@ -52,8 +55,7 @@ def game_play(screen, screen_rect):
 
     # initialize our starting sprites
     global SCORE
-    player = Player(screen_rect)
-    Rider(screen_rect)  # note, this 'lives' because it goes into a sprite group
+    player = Player(screen_rect, way_points, True)
     if pygame.font:
         all.add(Score(SCORE))
 
@@ -74,9 +76,8 @@ def game_play(screen, screen_rect):
 
         # handle player input
         direction = keystate[pygame.K_RIGHT] - keystate[pygame.K_LEFT]
-        player.move(direction)
-        firing = keystate[pygame.K_SPACE]
-        player.reloading = firing
+        player.move()
+
 
         # draw the scene
         dirty = all.draw(screen)
