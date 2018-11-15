@@ -21,7 +21,7 @@ class Player(pygame.sprite.Sprite):
 
         self.loop = loop
 
-        self.speed = 5
+        self.speed = 0
 
         self.way_points = way_points
         self.next_point = 0
@@ -56,6 +56,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.top = self.origtop - (self.rect.left // self.bounce % 2)
         '''
         if self.moving:
+            self.speed = 5
 
             # get distance to taget
             distance = self.current.distance_to(self.target)
@@ -80,3 +81,5 @@ class Player(pygame.sprite.Sprite):
                         self.target_index = 0
                     else:
                         self.moving = False
+
+            self.speed = 0

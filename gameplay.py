@@ -1,6 +1,7 @@
 import pygame
 
 import fileUtils
+from menu.pauseMenu import pause_menu
 from player import Player
 from pumptrackWayonits import way_points
 from rider import Rider
@@ -59,14 +60,16 @@ def game_play(screen, screen_rect):
     if pygame.font:
         all.add(Score(SCORE))
 
+    one_hit = False
+
     while player.alive():
 
         # get input
         for event in pygame.event.get():
             if event.type == pygame.QUIT or \
                     (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-                return
-        keystate = pygame.key.get_pressed()
+                pause_menu(screen, screen_rect)
+        key_state = pygame.key.get_pressed()
 
         # clear/erase the last drawn sprites
         all.clear(screen, background)
@@ -75,8 +78,10 @@ def game_play(screen, screen_rect):
         all.update()
 
         # handle player input
-        direction = keystate[pygame.K_RIGHT] - keystate[pygame.K_LEFT]
-        player.move()
+        #direction = key_state[pygame.K_SPACE] - key_state[pygame.K_LEFT]
+        if key_state[pygame.K_SPACE]:
+            player.move()
+            one_hit = True
 
 
         # draw the scene
