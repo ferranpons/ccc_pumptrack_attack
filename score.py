@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 import pygame
+import datetime
 
 
 class Score(pygame.sprite.Sprite):
@@ -17,6 +17,6 @@ class Score(pygame.sprite.Sprite):
         self.start_ticks = pygame.time.get_ticks()
 
     def update(self):
-        seconds = (pygame.time.get_ticks() - self.start_ticks) / 10
-        msg = "Time: %d" % seconds
+        time_in_millis = (pygame.time.get_ticks() - self.start_ticks)
+        msg = "Time: %s" % datetime.datetime.fromtimestamp(time_in_millis/1000.0).strftime('%S.%f')[:-3]
         self.image = self.font.render(msg, 0, self.color)
