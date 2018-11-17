@@ -1,17 +1,15 @@
-from enum import Enum
-
 import pygame
 
 import colors
 import fileUtils
 from countdown import CountDown
+from gameOverScreen import GameOverScreen
 from gameState import GameState
 from menu.pauseMenu import pause_menu
 from player import Player
 from pumptrackWayonits import way_points
 from rider import Rider
-from textUtils import text_format, MENU_FONT
-from timecounter import TimeCounter
+from timeCounter import TimeCounter
 
 
 def game_play(screen, screen_rect):
@@ -64,6 +62,7 @@ def game_play(screen, screen_rect):
     player = Player(screen_rect, way_points, True)
     time_counter = TimeCounter()
     time_countdown = CountDown()
+    game_over = GameOverScreen()
     if pygame.font:
         all.add(time_counter)
 
@@ -86,17 +85,29 @@ def game_play(screen, screen_rect):
         #player.update_state(game_state)
         time_counter.set_state(game_state)
         time_countdown.set_state(game_state)
+        game_over.set_state(game_state)
         time_countdown.update()
+        game_over.update()
+
+        if time_countdown.countdown <= 0 and game_state == GameState.STARTING:
+            game_state = GameState.PLAYING
+            screen.blit(background, background_rect)
+            pygame.display.flip()
 
         if game_state == GameState.PLAYING:
             if key_state[pygame.K_SPACE]:
                 player.move()
+            if player.lap >= 2:
+                game_state = GameState.GAME_OVER
+                game_over.set_final_time(time_counter.time_in_millis)
 
         if game_state == GameState.STARTING:
             time_countdown.draw(screen, screen_rect, background, background_in_alpha)
             pygame.display.update()
-            if time_countdown.countdown <= 0:
-                game_state = GameState.PLAYING
+
+        if game_state == GameState.GAME_OVER:
+            game_over.draw(screen, screen_rect, background, background_in_alpha)
+            pygame.display.update()
 
         dirty = all.draw(screen)
         pygame.display.update(dirty)

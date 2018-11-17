@@ -9,6 +9,7 @@ class Player(pygame.sprite.Sprite):
     bounce = 24
     gun_offset = -11
     screen_rect = Rect(0, 0, 1280, 768)
+    lap = 0
 
     def __init__(self, new_rect, way_points, loop=False):
         self.screen_rect = new_rect
@@ -56,7 +57,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.top = self.origtop - (self.rect.left // self.bounce % 2)
         '''
         if self.moving:
-            self.speed = 5
+            self.speed = 10
 
             # get distance to taget
             distance = self.current.distance_to(self.target)
@@ -78,6 +79,7 @@ class Player(pygame.sprite.Sprite):
                     self.target = pygame.math.Vector2(self.way_points[self.target_index])
                 else:
                     if self.loop:
+                        self.lap += 1
                         self.target_index = 0
                     else:
                         self.moving = False

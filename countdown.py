@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 import pygame
-import datetime
 
 import colors
 from gameState import GameState
