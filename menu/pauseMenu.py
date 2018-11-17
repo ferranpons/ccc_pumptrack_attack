@@ -23,6 +23,7 @@ menu_options_descriptions = [MENU_START_DESCRIPTION,
 
 def pause_menu(screen, screen_rect):
     menu = True
+    quit = False
     selected = 0
 
     # Load
@@ -51,6 +52,7 @@ def pause_menu(screen, screen_rect):
                     if selected == 0:
                         menu = False
                     if selected == 1:
+                        quit = True
                         menu = False
 
         title = text_format(TITLE_TEXT, MENU_FONT, 50, colors.white)
@@ -63,14 +65,16 @@ def pause_menu(screen, screen_rect):
         else:
             text_quit = text_format(MENU_QUIT, MENU_FONT, 25, colors.light_gray)
 
-        text_option_description = text_format(menu_options_descriptions[selected], MENU_FONT, 16, colors.white)
+        #text_option_description = text_format(menu_options_descriptions[selected], MENU_FONT, 16, colors.white)
 
         screen.blit(title, (150, 220))
         screen.blit(menu_line, (150, 350))
         screen.blit(text_start, (150, 370))
-        screen.blit(text_quit, (150, 460))
+        screen.blit(text_quit, (150, 400))
         screen.blit(menu_line, (150, 500))
-        screen.blit(text_option_description, (150, 520))
+        #screen.blit(text_option_description, (150, 520))
 
         pygame.display.update()
         clock.tick(30)
+
+    return quit

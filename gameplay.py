@@ -11,11 +11,11 @@ SCORE = 0
 
 
 def game_play(screen, screen_rect):
+    playing = True
+
     # Load images, assign to sprite classes
-    # (do this before the classes are used, after screen setup)
     img = fileUtils.load_image('rider1-placeholder.png')
     Player.images = [img, pygame.transform.flip(img, 1, 0)]
-    #Rider.images = fileUtils.load_images('intro_ball.gif', 'intro_ball.gif', 'intro_ball.gif')
 
     # decorate the game window
     #icon = pygame.transform.scale(Rider.images[0], (32, 32))
@@ -28,10 +28,6 @@ def game_play(screen, screen_rect):
     background_rect = background.get_rect()
     screen.blit(background, background_rect)
     pygame.display.flip()
-    #for x in range(0, screen_rect.width, bgdtile.get_width()):
-    #    background.blit(bgdtile, (x, 0))
-    #screen.blit(background, (0, 0))
-    #pygame.display.flip()
 
     # load the sound effects
     # shoot_sound = load_sound('car_door.wav')
@@ -62,13 +58,18 @@ def game_play(screen, screen_rect):
 
     one_hit = False
 
-    while player.alive():
+    while playing:
 
         # get input
         for event in pygame.event.get():
             if event.type == pygame.QUIT or \
                     (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-                pause_menu(screen, screen_rect)
+                quit_game = pause_menu(screen, screen_rect)
+                if quit_game:
+                    return
+                screen.blit(background, background_rect)
+                pygame.display.flip()
+
         key_state = pygame.key.get_pressed()
 
         # clear/erase the last drawn sprites
