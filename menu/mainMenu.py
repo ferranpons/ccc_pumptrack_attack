@@ -4,6 +4,7 @@ import colors
 from menu.creditsMenu import credits_menu
 from fileUtils import load_image
 from gameplay import game_play
+from menu.leaderboardMenu import leaderboard_menu
 from menu.menulogos import MenuLogos
 from menu.settingsMenu import settings_menu
 from textUtils import text_format, MENU_FONT
@@ -15,17 +16,20 @@ clock = pygame.time.Clock()
 TITLE_TEXT = "MAIN MENU"
 MENU_START = "START"
 MENU_SETTINGS = "SETTINGS"
+MENU_LEADERBOARD = "LEADERBOARD"
 MENU_CREDITS = "CREDITS"
 MENU_QUIT = "QUIT"
 
 MENU_START_DESCRIPTION = "Start a new game"
 MENU_START_SETTINGS_DESCRIPTION = "Change the settings of the game"
+MENU_LEADERBOARD_DESCRIPTION = "Who made the best time? It was you? Check it out!"
 MENU_CREDITS_DESCRIPTION = "Checkout who made this game"
 MENU_QUIT_DESCRIPTION = "Leave this game"
 
-menu_options = [MENU_START, MENU_SETTINGS, MENU_CREDITS, MENU_QUIT]
+menu_options = [MENU_START, MENU_SETTINGS, MENU_LEADERBOARD, MENU_CREDITS, MENU_QUIT]
 menu_options_descriptions = [MENU_START_DESCRIPTION,
                              MENU_START_SETTINGS_DESCRIPTION,
+                             MENU_LEADERBOARD_DESCRIPTION,
                              MENU_CREDITS_DESCRIPTION,
                              MENU_QUIT_DESCRIPTION]
 
@@ -62,8 +66,10 @@ def main_menu(screen, screen_rect):
                     if selected == 1:
                         settings_menu(menu_logos)
                     if selected == 2:
-                        credits_menu(screen, menu_logos)
+                        leaderboard_menu(screen, menu_logos)
                     if selected == 3:
+                        credits_menu(screen, menu_logos)
+                    if selected == 4:
                         pygame.quit()
                         quit()
 
@@ -87,10 +93,14 @@ def main_menu(screen, screen_rect):
         else:
             text_settings = text_format(MENU_SETTINGS, MENU_FONT, 25, colors.light_gray)
         if selected == 2:
+            text_leaderboard = text_format(MENU_LEADERBOARD, MENU_FONT, 25, colors.white)
+        else:
+            text_leaderboard = text_format(MENU_LEADERBOARD, MENU_FONT, 25, colors.light_gray)
+        if selected == 3:
             text_credits = text_format(MENU_CREDITS, MENU_FONT, 25, colors.white)
         else:
             text_credits = text_format(MENU_CREDITS, MENU_FONT, 25, colors.light_gray)
-        if selected == 3:
+        if selected == 4:
             text_quit = text_format(MENU_QUIT, MENU_FONT, 25, colors.white)
         else:
             text_quit = text_format(MENU_QUIT, MENU_FONT, 25, colors.light_gray)
@@ -99,14 +109,14 @@ def main_menu(screen, screen_rect):
 
         # Main Menu Text
         screen.blit(title, (150, 220))
-        screen.blit(menu_line, (150, 350))
-        screen.blit(text_start, (150, 370))
-        screen.blit(text_settings, (150, 400))
+        screen.blit(menu_line, (150, 320))
+        screen.blit(text_start, (150, 340))
+        screen.blit(text_settings, (150, 370))
+        screen.blit(text_leaderboard, (150, 400))
         screen.blit(text_credits, (150, 430))
         screen.blit(text_quit, (150, 460))
         screen.blit(menu_line, (150, 500))
         screen.blit(text_option_description, (150, 520))
-        #screen.blit(menu_line, (150, 600))
         pygame.display.update()
         clock.tick(30)
 

@@ -23,4 +23,4 @@ class MenuLogos:
         screen.blit(self.logo_one, (screen_rect.size[0] - (logo_one_rect[2] / 2) - 400, 500))
         self.logo_two = pygame.transform.smoothscale(self.logo_two, (100, 100))
         logo_two_rect = self.logo_two.get_rect()
-        screen.blit(self.logo_two, (screen_rect.size[0] - (logo_two_rect[2] / 2) - 200, 500))
+        screen.blit(self.logo_two, (screen_rect.size[0] - (logo_two_rect[2] / 2) - 200, 540))

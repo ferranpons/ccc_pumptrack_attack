@@ -147,10 +147,10 @@ def settings_menu(menu_logos):
 
         # Main Menu Text
         screen.blit(title, (150, 220))
-        screen.blit(menu_line, (150, 350))
-        screen.blit(text_start, (150, 370))
-        screen.blit(text_settings, (150, 400))
-        screen.blit(text_credits, (150, 430))
+        screen.blit(menu_line, (150, 320))
+        screen.blit(text_start, (150, 340))
+        screen.blit(text_settings, (150, 370))
+        screen.blit(text_credits, (150, 400))
         screen.blit(text_quit, (150, 460))
         screen.blit(menu_line, (150, 500))
         screen.blit(text_option_description, (150, 520))

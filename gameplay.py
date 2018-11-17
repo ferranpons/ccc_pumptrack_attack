@@ -35,6 +35,8 @@ def game_play(screen, screen_rect):
         music = os.path.join(main_dir, 'data', 'house_lo.wav')
         pygame.mixer.music.load(music)
         pygame.mixer.music.play(-1)"""
+    #fileUtils.load_music("Lame_Drivers_-_01_-_Frozen_Egg.mp3")
+    #pygame.mixer.music.play(-1)
 
     # Initialize Game Groups
     aliens = pygame.sprite.Group()
