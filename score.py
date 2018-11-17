@@ -18,5 +18,5 @@ class Score(pygame.sprite.Sprite):
 
     def update(self):
         time_in_millis = (pygame.time.get_ticks() - self.start_ticks)
-        msg = "Time: %s" % datetime.datetime.fromtimestamp(time_in_millis/1000.0).strftime('%S.%f')[:-3]
+        msg = "Time: %ss" % datetime.datetime.fromtimestamp(time_in_millis/1000.0).strftime('%S.%f')[:-3]
         self.image = self.font.render(msg, 0, self.color)
