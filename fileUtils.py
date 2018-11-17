@@ -10,6 +10,18 @@ class DummySound:
     def play(self): pass
 
 
+def load_leaderboard():
+    file_name = os.path.join(main_dir, 'data', 'leaderboard.txt')
+    file = open(file_name, 'r')
+    file_content = file.readlines()
+    file.close()
+
+    leaders_array = []
+    for item in file_content:
+        leaders_array.append(item.replace('\n', '').split(','))
+    return leaders_array
+
+
 def load_image(file):
     color_key = (255, 0, 255)
     file = os.path.join(main_dir, 'data', file)

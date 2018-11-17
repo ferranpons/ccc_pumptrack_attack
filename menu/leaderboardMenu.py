@@ -1,9 +1,7 @@
-import os
-
 import pygame
 
 import colors
-from fileUtils import load_image, main_dir
+from fileUtils import load_image, load_leaderboard
 from textUtils import text_format, MENU_FONT
 
 background_file = 'background_menu.png'
@@ -11,18 +9,6 @@ menu_line_file = 'menu_line.png'
 clock = pygame.time.Clock()
 
 TITLE_TEXT = "LEADERBOARD"
-
-
-def load_leaderboard():
-    file_name = os.path.join(main_dir, 'data', 'leaderboard.txt')
-    file = open(file_name, 'r')
-    file_content = file.readlines()
-    file.close()
-
-    leaders_array = []
-    for item in file_content:
-        leaders_array.append(item.replace('\n', '').split(','))
-    return leaders_array
 
 
 def leaderboard_menu(screen, menu_logos):
