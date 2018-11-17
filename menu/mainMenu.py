@@ -22,7 +22,7 @@ MENU_QUIT = "QUIT"
 
 MENU_START_DESCRIPTION = "Start a new game"
 MENU_START_SETTINGS_DESCRIPTION = "Change the settings of the game"
-MENU_LEADERBOARD_DESCRIPTION = "Who made the best time? It was you? Check it out!"
+MENU_LEADERBOARD_DESCRIPTION = "Who did the best time? It was you? Check it out!"
 MENU_CREDITS_DESCRIPTION = "Checkout who made this game"
 MENU_QUIT_DESCRIPTION = "Leave this game"
 
