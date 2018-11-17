@@ -1,17 +1,22 @@
+from enum import Enum
+
 import pygame
 
+import colors
 import fileUtils
+from countdown import CountDown
+from gameState import GameState
 from menu.pauseMenu import pause_menu
 from player import Player
 from pumptrackWayonits import way_points
 from rider import Rider
-from score import Score
-
-SCORE = 0
+from textUtils import text_format, MENU_FONT
+from timecounter import TimeCounter
 
 
 def game_play(screen, screen_rect):
     playing = True
+    game_state = GameState.STARTING
 
     # Load images, assign to sprite classes
     img = fileUtils.load_image('rider1-placeholder.png')
@@ -28,6 +33,10 @@ def game_play(screen, screen_rect):
     background_rect = background.get_rect()
     screen.blit(background, background_rect)
     pygame.display.flip()
+
+    background_in_alpha = pygame.Surface((screen_rect.size[0], screen_rect.size[1]))
+    background_in_alpha.set_alpha(128)
+    background_in_alpha.fill(colors.black)
 
     # load the sound effects
     # shoot_sound = load_sound('car_door.wav')
@@ -46,19 +55,17 @@ def game_play(screen, screen_rect):
     # assign default groups to each sprite class
     Player.containers = all
     Rider.containers = aliens, all, lastalien
-    Score.containers = all
+    TimeCounter.containers = all
 
     # Create Some Starting Values
-    global score
     clock = pygame.time.Clock()
 
     # initialize our starting sprites
-    global SCORE
     player = Player(screen_rect, way_points, True)
+    time_counter = TimeCounter()
+    time_countdown = CountDown()
     if pygame.font:
-        all.add(Score(SCORE))
-
-    one_hit = False
+        all.add(time_counter)
 
     while playing:
 
@@ -74,22 +81,24 @@ def game_play(screen, screen_rect):
 
         key_state = pygame.key.get_pressed()
 
-        # clear/erase the last drawn sprites
         all.clear(screen, background)
-
-        # update all the sprites
         all.update()
+        #player.update_state(game_state)
+        time_counter.set_state(game_state)
+        time_countdown.set_state(game_state)
+        time_countdown.update()
 
-        # handle player input
-        #direction = key_state[pygame.K_SPACE] - key_state[pygame.K_LEFT]
-        if key_state[pygame.K_SPACE]:
-            player.move()
-            one_hit = True
+        if game_state == GameState.PLAYING:
+            if key_state[pygame.K_SPACE]:
+                player.move()
 
+        if game_state == GameState.STARTING:
+            time_countdown.draw(screen, screen_rect, background, background_in_alpha)
+            pygame.display.update()
+            if time_countdown.countdown <= 0:
+                game_state = GameState.PLAYING
 
-        # draw the scene
         dirty = all.draw(screen)
         pygame.display.update(dirty)
 
-        # cap the framerate
-        clock.tick(40)
+        clock.tick(30)
