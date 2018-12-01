@@ -72,8 +72,8 @@ def main(window_style=0):
     screen = pygame.display.set_mode(screen_rect.size, window_style, best_depth)
     pygame.display.set_caption(CAPTION)
 
-    #splash_intro(screen)
-    #title_screen(screen, screen_rect)
+    splash_intro(screen)
+    title_screen(screen, screen_rect)
     main_menu(screen, screen_rect)
     #game_play(screen, screen_rect)
 
