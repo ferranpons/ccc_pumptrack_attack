@@ -7,7 +7,7 @@ from gameOverScreen import GameOverScreen, GameOverState
 from gameState import GameState
 from menu.pauseMenu import PauseScreen
 from player import Player
-from pumptrackWayonits import way_points
+from pumptrackWayonits import way_points_pump_track
 from rider import Rider
 from timeCounter import TimeCounter
 
@@ -15,7 +15,7 @@ from timeCounter import TimeCounter
 def game_play(screen, screen_rect):
     playing = True
     game_state = GameState.STARTING
-    number_of_laps = 1
+    number_of_laps = 2
 
     # Load images, assign to sprite classes
     img = fileUtils.load_image('rider1-placeholder.png')
@@ -28,7 +28,7 @@ def game_play(screen, screen_rect):
     # pygame.mouse.set_visible(0)
 
     # create the background, tile the bgd image
-    background = fileUtils.load_image('pumptrack1-placeholder.png')
+    background = fileUtils.load_image('pumptrack.png')
     background_rect = background.get_rect()
     screen.blit(background, background_rect)
     pygame.display.flip()
@@ -60,7 +60,7 @@ def game_play(screen, screen_rect):
     clock = pygame.time.Clock()
 
     # initialize our starting sprites
-    player = Player(screen_rect, way_points, True)
+    player = Player(screen_rect, way_points_pump_track, True)
     time_counter = TimeCounter()
     time_countdown = CountDown()
     game_over = GameOverScreen()
@@ -132,7 +132,7 @@ def game_play(screen, screen_rect):
 
         if game_state == GameState.RESTART:
             clock = pygame.time.Clock()
-            player = Player(screen_rect, way_points, True)
+            player = Player(screen_rect, way_points_pump_track, True)
             time_counter = TimeCounter()
             time_countdown = CountDown()
             game_state = GameState.STARTING

@@ -108,7 +108,7 @@ def settings_menu(menu_logos):
                     if selected == 2:
                         toggle_full_screen()
                     if selected == 3:
-                        return
+                        menu = False
 
         # Draw Background
         background_rect = background_image.get_rect()
