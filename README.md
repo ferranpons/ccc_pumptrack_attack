@@ -7,10 +7,9 @@
 Chainbreakers' Pumptrack Attack
 ===============================
 
-<img src="data/ccc_pumptrack_attack_title.png" align="left" width="168px" height="168px"/>
-<img align="left" width="0" height="168px" hspace="10"/>
+<img src="data/ccc_pumptrack_attack_title.png" align="center" width="347px" height="200px"/>
 
-*An action-packed 3rd person game for Windows*
+*Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike*
 
 ![PumptrackAttack-v1](https://img.shields.io/badge/pumptrack-attack-v1.0.0-green.svg)
 
