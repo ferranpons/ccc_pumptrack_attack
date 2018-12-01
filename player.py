@@ -5,11 +5,20 @@ from pygame.rect import Rect
 
 
 class Player(pygame.sprite.Sprite):
-    speed = 10
-    bounce = 24
-    gun_offset = -11
+    max_speed = 8
+    speed = 8
+    boost = 2
+    acceleration = .1
     screen_rect = Rect(0, 0, 1280, 768)
     lap = 0
+    buffer = []
+    max_buffer_count = 3
+    start_ticks = 0
+    time_in_seconds = 0
+    previous_time_in_seconds = 0
+    pop_time = 0.15
+    containers = None
+    images = None
 
     def __init__(self, new_rect, way_points, loop=False):
         self.screen_rect = new_rect
@@ -45,24 +54,14 @@ class Player(pygame.sprite.Sprite):
             self.moving = False
 
     def move(self):
-        '''
-        if direction:
-            self.facing = direction
-        self.rect.move_ip(direction * self.speed, 0)
-        self.rect = self.rect.clamp(self.screen_rect)
-        if direction < 0:
-            self.image = self.images[0]
-        elif direction > 0:
-            self.image = self.images[1]
-        self.rect.top = self.origtop - (self.rect.left // self.bounce % 2)
-        '''
         if self.moving:
-            self.speed = 10
+            self.speed += self.acceleration * pygame.time.get_ticks() / 100
+            if self.speed >= self.max_speed:
+                self.speed = self.max_speed
 
             # get distance to taget
             distance = self.current.distance_to(self.target)
 
-            #
             if distance > self.speed:
                 self.current = self.current + (self.target - self.current).normalize() * self.speed
                 self.rect.center = self.current
@@ -84,4 +83,18 @@ class Player(pygame.sprite.Sprite):
                     else:
                         self.moving = False
 
-            self.speed = 0
+    def add_pump(self):
+        if self.buffer.__len__() <= self.max_buffer_count:
+            self.buffer.append(1)
+
+    def pump(self):
+        print(self.buffer)
+        self.time_in_seconds = (pygame.time.get_ticks() - self.start_ticks) / 1000
+        if self.time_in_seconds - self.previous_time_in_seconds > self.pop_time:
+            self.previous_time_in_seconds = self.time_in_seconds
+            if self.buffer.__len__() > 0:
+                self.buffer.pop()
+        if self.buffer.__len__() > 0:
+            self.move()
+
+

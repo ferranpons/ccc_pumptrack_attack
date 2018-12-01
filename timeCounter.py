@@ -9,6 +9,7 @@ class TimeCounter(pygame.sprite.Sprite):
     start_ticks = 0
     state = GameState.STARTING
     time_in_millis = 0
+    image = None
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)

@@ -21,10 +21,10 @@ def game_play(screen, screen_rect):
     Player.images = [img, pygame.transform.flip(img, 1, 0)]
 
     # decorate the game window
-    #icon = pygame.transform.scale(Rider.images[0], (32, 32))
-    #pygame.display.set_icon(icon)
-    #pygame.display.set_caption('Pygame Aliens')
-    #pygame.mouse.set_visible(0)
+    # icon = pygame.transform.scale(Rider.images[0], (32, 32))
+    # pygame.display.set_icon(icon)
+    # pygame.display.set_caption('Pygame Aliens')
+    # pygame.mouse.set_visible(0)
 
     # create the background, tile the bgd image
     background = fileUtils.load_image('pumptrack1-placeholder.png')
@@ -42,8 +42,8 @@ def game_play(screen, screen_rect):
         music = os.path.join(main_dir, 'data', 'house_lo.wav')
         pygame.mixer.music.load(music)
         pygame.mixer.music.play(-1)"""
-    #fileUtils.load_music("Lame_Drivers_-_01_-_Frozen_Egg.mp3")
-    #pygame.mixer.music.play(-1)
+    # fileUtils.load_music("Lame_Drivers_-_01_-_Frozen_Egg.mp3")
+    # pygame.mixer.music.play(-1)
 
     # Initialize Game Groups
     aliens = pygame.sprite.Group()
@@ -66,6 +66,8 @@ def game_play(screen, screen_rect):
     if pygame.font:
         all.add(time_counter)
 
+    button_down = False
+
     while playing:
 
         # get input
@@ -77,12 +79,17 @@ def game_play(screen, screen_rect):
                     return
                 screen.blit(background, background_rect)
                 pygame.display.flip()
+            if event.type == pygame.KEYDOWN \
+                    and event.key == pygame.K_SPACE \
+                    and button_down is False \
+                    and game_state == GameState.PLAYING:
+                button_down = True
 
         key_state = pygame.key.get_pressed()
 
         all.clear(screen, background)
         all.update()
-        #player.update_state(game_state)
+        # player.update_state(game_state)
         time_counter.set_state(game_state)
         time_countdown.set_state(game_state)
         game_over.set_state(game_state)
@@ -95,8 +102,10 @@ def game_play(screen, screen_rect):
             pygame.display.flip()
 
         if game_state == GameState.PLAYING:
-            if key_state[pygame.K_SPACE]:
-                player.move()
+            player.pump()
+            if button_down is True:
+                player.add_pump()
+                button_down = False
             if player.lap >= 2:
                 game_state = GameState.GAME_OVER
                 game_over.set_final_time(time_counter.time_in_millis)
