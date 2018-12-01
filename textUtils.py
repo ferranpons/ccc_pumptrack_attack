@@ -1,6 +1,6 @@
 import pygame
 
-MENU_FONT = 'freesansbold.ttf'
+MENU_FONT = 'data\\freesansbold.ttf'
 
 
 def text_format(message, text_font, text_size, text_color):

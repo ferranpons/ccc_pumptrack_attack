@@ -11,7 +11,7 @@ class DummySound:
 
 
 def load_leaderboard():
-    file_name = os.path.join(main_dir, 'data', 'leaderboard.txt')
+    file_name = 'data\\' + 'leaderboard.txt'
     file = open(file_name, 'r')
     file_content = file.readlines()
     file.close()
@@ -24,7 +24,7 @@ def load_leaderboard():
 
 def load_image(file):
     color_key = (255, 0, 255)
-    file = os.path.join(main_dir, 'data', file)
+    file = 'data\\' + file
     try:
         surface = pygame.image.load(file)
         if surface.get_alpha():
@@ -66,7 +66,7 @@ def load_all_gfx(directory, colorkey=(255, 0, 255), accept=(".png", ".jpg", ".bm
 def load_sound(file):
     if not pygame.mixer:
         return DummySound()
-    file = os.path.join(main_dir, 'data', file)
+    file = 'data\\' +  file
     try:
         sound = pygame.mixer.Sound(file)
         return sound
@@ -78,7 +78,7 @@ def load_sound(file):
 def load_music(file):
     if not pygame.mixer:
         return DummySound()
-    file = os.path.join(main_dir, 'data', file)
+    file = 'data\\' +  file
     try:
         pygame.mixer.music.load(file)
     except pygame.error:
