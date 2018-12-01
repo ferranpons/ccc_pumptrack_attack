@@ -5,7 +5,7 @@ import fileUtils
 from countdown import CountDown
 from gameOverScreen import GameOverScreen, GameOverState
 from gameState import GameState
-from menu.pauseMenu import pause_menu
+from menu.pauseMenu import PauseScreen
 from player import Player
 from pumptrackWayonits import way_points
 from rider import Rider
@@ -15,6 +15,7 @@ from timeCounter import TimeCounter
 def game_play(screen, screen_rect):
     playing = True
     game_state = GameState.STARTING
+    number_of_laps = 2
 
     # Load images, assign to sprite classes
     img = fileUtils.load_image('rider1-placeholder.png')
@@ -63,6 +64,7 @@ def game_play(screen, screen_rect):
     time_counter = TimeCounter()
     time_countdown = CountDown()
     game_over = GameOverScreen()
+    pause_menu = PauseScreen()
     if pygame.font:
         all.add(time_counter)
 
@@ -77,13 +79,17 @@ def game_play(screen, screen_rect):
                 game_state = GameState.STARTING
             elif game_over_state == GameOverState.QUIT:
                 return
-            if event.type == pygame.QUIT or \
-                    (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-                quit_game = pause_menu(screen, screen_rect)
-                if quit_game:
-                    return
-                screen.blit(background, background_rect)
-                pygame.display.flip()
+
+            quit_game = pause_menu.update_input(event)
+            if quit_game:
+                return
+
+            if event.type == pygame.QUIT \
+                    or (event.type == pygame.KEYDOWN
+                        and event.key == pygame.K_ESCAPE
+                        and game_state == GameState.PLAYING):
+                game_state = GameState.PAUSED
+
             if event.type == pygame.KEYDOWN \
                     and event.key == pygame.K_SPACE \
                     and button_down is False \
@@ -108,12 +114,16 @@ def game_play(screen, screen_rect):
             if button_down is True:
                 player.add_pump()
                 button_down = False
-            if player.lap >= 0:
+            if player.lap >= number_of_laps:
                 game_state = GameState.GAME_OVER
                 game_over.set_final_time(time_counter.time_in_millis)
 
         if game_state == GameState.STARTING:
             time_countdown.draw(screen, screen_rect, background, background_in_alpha)
+            pygame.display.update()
+
+        if game_state == GameState.PAUSED:
+            pause_menu.draw(screen, screen_rect, background, background_in_alpha)
             pygame.display.update()
 
         if game_state == GameState.GAME_OVER:
