@@ -85,8 +85,6 @@ def game_play(screen, screen_rect):
                     and game_state == GameState.PLAYING:
                 button_down = True
 
-        key_state = pygame.key.get_pressed()
-
         all.clear(screen, background)
         all.update()
         # player.update_state(game_state)
