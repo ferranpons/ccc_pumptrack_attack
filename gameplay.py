@@ -18,7 +18,7 @@ def game_play(screen, screen_rect):
     number_of_laps = 2
 
     # Load images, assign to sprite classes
-    img = fileUtils.load_image('rider1-placeholder.png')
+    img = fileUtils.load_image('rider1_placeholder.png')
     Player.images = [img, pygame.transform.flip(img, 1, 0)]
 
     # decorate the game window

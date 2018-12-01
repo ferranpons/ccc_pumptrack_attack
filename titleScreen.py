@@ -5,7 +5,7 @@ from fileUtils import load_music, load_image
 from textUtils import text_format, MENU_FONT
 
 background_file = 'background_title.png'
-main_theme = 'Windom_Earle_-_07_-_screw_wave.mp3'
+main_theme = 'Windom_Earle_07_screw_wave.mp3'
 clock = pygame.time.Clock()
 
 

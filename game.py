@@ -42,7 +42,7 @@ def splash_intro(screen):
         splash_ccc_rect = splash_ccc.get_rect()
         splash_ccc_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2)
 
-        splash_pygame = fileUtils.load_image("pygame-badge-SMA.png")
+        splash_pygame = fileUtils.load_image("pygame_badge_SMA.png")
         splash_pygame_rect = splash_pygame.get_rect()
         splash_pygame_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2)
 
