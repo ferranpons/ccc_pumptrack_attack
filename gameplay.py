@@ -3,7 +3,7 @@ import pygame
 import colors
 import fileUtils
 from countdown import CountDown
-from gameOverScreen import GameOverScreen
+from gameOverScreen import GameOverScreen, GameOverState
 from gameState import GameState
 from menu.pauseMenu import pause_menu
 from player import Player
@@ -72,6 +72,11 @@ def game_play(screen, screen_rect):
 
         # get input
         for event in pygame.event.get():
+            game_over_state = game_over.update_input(event)
+            if game_over_state == GameOverState.RESTART:
+                game_state = GameState.STARTING
+            elif game_over_state == GameOverState.QUIT:
+                return
             if event.type == pygame.QUIT or \
                     (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 quit_game = pause_menu(screen, screen_rect)
@@ -92,7 +97,6 @@ def game_play(screen, screen_rect):
         time_countdown.set_state(game_state)
         game_over.set_state(game_state)
         time_countdown.update()
-        game_over.update()
 
         if time_countdown.countdown <= 0 and game_state == GameState.STARTING:
             game_state = GameState.PLAYING
@@ -104,7 +108,7 @@ def game_play(screen, screen_rect):
             if button_down is True:
                 player.add_pump()
                 button_down = False
-            if player.lap >= 2:
+            if player.lap >= 0:
                 game_state = GameState.GAME_OVER
                 game_over.set_final_time(time_counter.time_in_millis)
 
