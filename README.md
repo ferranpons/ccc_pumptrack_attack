@@ -4,15 +4,9 @@
   Author: Ferran Pons
   -->
 
-Chainbreakers' Pumptrack Attack
-===============================
-
 <img src="data/ccc_pumptrack_attack_title.png" align="center" width="347px" height="200px"/>
 
 *Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike*
-
-![PumptrackAttack-v1](https://img.shields.io/badge/pumptrack-attack-v1.0.0-green.svg)
-
 
 
 <br/>
