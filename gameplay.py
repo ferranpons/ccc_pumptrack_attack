@@ -15,7 +15,7 @@ from timeCounter import TimeCounter
 def game_play(screen, screen_rect):
     playing = True
     game_state = GameState.STARTING
-    number_of_laps = 2
+    number_of_laps = 1
 
     # Load images, assign to sprite classes
     img = fileUtils.load_image('rider1-placeholder.png')
@@ -76,7 +76,7 @@ def game_play(screen, screen_rect):
         for event in pygame.event.get():
             game_over_state = game_over.update_input(event)
             if game_over_state == GameOverState.RESTART:
-                game_state = GameState.STARTING
+                game_state = GameState.RESTART
             elif game_over_state == GameOverState.QUIT:
                 return
 
@@ -129,6 +129,13 @@ def game_play(screen, screen_rect):
         if game_state == GameState.GAME_OVER:
             game_over.draw(screen, screen_rect, background, background_in_alpha)
             pygame.display.update()
+
+        if game_state == GameState.RESTART:
+            clock = pygame.time.Clock()
+            player = Player(screen_rect, way_points, True)
+            time_counter = TimeCounter()
+            time_countdown = CountDown()
+            game_state = GameState.STARTING
 
         dirty = all.draw(screen)
         pygame.display.update(dirty)
