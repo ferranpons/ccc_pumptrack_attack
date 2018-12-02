@@ -8,7 +8,7 @@
 <img src="data/ccc_pumptrack_attack_title.png" width="347px" height="200px"/>
 </p>
 *Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike.* 
-*This is a submission to [Game Off 2018](https://itch.io/jam/game-off-2018/rate/337963)*
+This is a submission to [Game Off 2018](https://itch.io/jam/game-off-2018/rate/337963)
 
 
 <br/>
