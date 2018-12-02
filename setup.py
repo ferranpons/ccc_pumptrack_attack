@@ -57,5 +57,5 @@ setup(
                   "data\\freesansbold.ttf"
                   ])
     ],
-    zipfile=None
+    zipfile=None, requires=['pygame']
 )

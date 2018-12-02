@@ -4,6 +4,8 @@ import datetime
 
 from gameState import GameState
 
+MENU_FONT = 'data\\freesansbold.ttf'
+
 
 class TimeCounter(pygame.sprite.Sprite):
     start_ticks = 0
@@ -13,7 +15,7 @@ class TimeCounter(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.font = pygame.font.Font(None, 20)
+        self.font = pygame.font.Font(MENU_FONT, 20)
         self.font.set_italic(1)
         self.color = pygame.Color('white')
         self.update()
