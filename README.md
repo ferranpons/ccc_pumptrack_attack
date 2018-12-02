@@ -6,7 +6,7 @@
 
 <img src="data/ccc_pumptrack_attack_title.png" align="center" width="347px" height="200px"/>
 
-*Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike*
+*Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike. This is a submission to [Game Off 2018](https://itch.io/jam/game-off-2018/rate/337963)*
 
 
 <br/>
@@ -43,7 +43,7 @@
 
 ### Download
 
-For now, if you want to play this game, you can download the released (v1.0.0) for PC Windows **for free** [here]().
+For now, if you want to play this game, you can download the released (v0.1.0) for PC Windows **for free** [here](https://retrowax.itch.io/chainbreakers-pumptrack-attack).
 
 
 ### Requirements
