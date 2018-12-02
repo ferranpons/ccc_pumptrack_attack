@@ -19,7 +19,7 @@ class TimeCounter(pygame.sprite.Sprite):
         self.font.set_italic(1)
         self.color = pygame.Color('white')
         self.update()
-        self.rect = self.image.get_rect().move(500, 50)
+        self.rect = self.image.get_rect().move(60, 660)
         self.start_ticks = pygame.time.get_ticks()
 
     def set_state(self, game_state):
