@@ -4,7 +4,7 @@
   Author: Ferran Pons
   -->
 
-<img src="data/ccc_pumptrack_attack_title.png" align="center" width="347px" height="200px"/>
+<img src="data/ccc_pumptrack_attack_title.png" align="middle" width="347px" height="200px"/>
 
 *Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike. This is a submission to [Game Off 2018](https://itch.io/jam/game-off-2018/rate/337963)*
 
@@ -25,10 +25,8 @@
 
 ### Features
 
-<!--
 <img align="right" width="0" height="328px" hspace="20"/>
-<img src="https://store-images.s-microsoft.com/image/apps.65181.9007199266264130.ce1907f7-2a09-4572-9bf8-b23795a367f8.73855415-7fed-44c9-bbc4-793982d3029e?w=580&h=326&q=60&mode=letterbox&background=black" width="328" height="200px" align="right" />
--->
+<img src="https://img.itch.zone/aW1hZ2UvMzM3OTYzLzE2NzY0OTIucG5n/347x500/uPdtBi.png" width="328" height="200px" align="right" />
 
 * Time attack
 * Leaderboards
