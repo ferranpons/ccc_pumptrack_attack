@@ -9,9 +9,8 @@
 </p>
 
 <p align="center">
-*Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike.* 
-
-*This is a submission to [Game Off 2018](https://itch.io/jam/game-off-2018/rate/337963)*
+Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike.
+This is a submission to <a href="https://itch.io/jam/game-off-2018/rate/337963">Game Off 2018</a>
 </p>
 
 
