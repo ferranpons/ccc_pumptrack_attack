@@ -77,10 +77,13 @@ def main(window_style=0):
     main_menu(screen, screen_rect)
     #game_play(screen, screen_rect)
 
-    if pygame.mixer:
-        pygame.mixer.music.fadeout(1000)
-    pygame.time.wait(1000)
-    pygame.quit()
+    try:
+        if pygame.mixer:
+            pygame.mixer.music.fadeout(1000)
+        pygame.time.wait(1000)
+        pygame.quit()
+    except RuntimeError:
+        pass
 
 
 if __name__ == '__main__':
