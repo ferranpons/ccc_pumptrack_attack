@@ -75,7 +75,7 @@ def credits_menu(screen, menu_logos):
         title = text_format(TITLE_TEXT, MENU_FONT, 50, colors.white)
         screen.blit(title, (150, 220))
 
-        developed_by = text_format("DEVELOPED BY FERRAN PONS", MENU_FONT, 16, colors.white)
+        developed_by = text_format("DEVELOPED BY FERRAN PONS (PROGRAMMING AND GRAPHICS)", MENU_FONT, 16, colors.white)
         screen.blit(developed_by, (150, 300))
 
         screen.blit(menu_line, (150, 320))
@@ -100,6 +100,15 @@ def credits_menu(screen, menu_logos):
         screen.blit(text_quit, (150, 460))
         screen.blit(menu_line, (150, 500))
         screen.blit(text_option_description, (150, 520))
+
+        music_title_text = text_format("MUSIC", MENU_FONT, 18, colors.white)
+        screen.blit(music_title_text, (800, 300))
+        screw_wave = text_format("Screw Wave by Windom Earle", MENU_FONT, 16, colors.white)
+        screen.blit(screw_wave, (800, 330))
+        screw_wave_license = \
+            text_format("licensed under a Attribution-NonCommercial-ShareAlike 3.0 International License.",
+                        MENU_FONT, 10, colors.white)
+        screen.blit(screw_wave_license, (800, 350))
 
         pygame.display.update()
         clock.tick(30)

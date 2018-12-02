@@ -4,9 +4,14 @@
   Author: Ferran Pons
   -->
 
-<img src="data/ccc_pumptrack_attack_title.png" align="center" width="347px" height="200px"/>
+<p align="center">
+<img src="data/ccc_pumptrack_attack_title.png" width="347px" height="200px"/>
+</p>
 
-*Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike*
+<p align="center">
+Open Source video game with a fancy pixel art about riding pump tracks with a mountain bike.<br/>
+This is a submission to <a href="https://itch.io/jam/game-off-2018/rate/337963">Game Off 2018</a>
+</p>
 
 
 <br/>
@@ -25,10 +30,8 @@
 
 ### Features
 
-<!--
 <img align="right" width="0" height="328px" hspace="20"/>
-<img src="https://store-images.s-microsoft.com/image/apps.65181.9007199266264130.ce1907f7-2a09-4572-9bf8-b23795a367f8.73855415-7fed-44c9-bbc4-793982d3029e?w=580&h=326&q=60&mode=letterbox&background=black" width="328" height="200px" align="right" />
--->
+<img src="https://img.itch.zone/aW1hZ2UvMzM3OTYzLzE2NzY0OTIucG5n/347x500/uPdtBi.png" width="328" height="200px" align="right" />
 
 * Time attack
 * Leaderboards
@@ -43,7 +46,7 @@
 
 ### Download
 
-For now, if you want to play this game, you can download the released (v1.0.0) for PC Windows **for free** [here]().
+For now, if you want to play this game, you can download the released (v0.1.0) for PC Windows **for free** [here](https://retrowax.itch.io/chainbreakers-pumptrack-attack).
 
 
 ### Requirements
@@ -75,7 +78,9 @@ Licensing
 
 #### Assets
 
-All art assets (``art``, ``music`` and
+``Screw Wave`` by **Windom Earle** is licensed under a [Attribution-NonCommercial-ShareAlike 3.0 International License.](http://creativecommons.org/licenses/by-nc-sa/3.0/)
+
+All art assets (``art`` and
 ``sound``) are distributed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
