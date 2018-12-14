@@ -71,7 +71,7 @@ def main_menu(screen, screen_rect):
                         credits_menu(screen, menu_logos)
                     if selected == 4:
                         pygame.quit()
-                        quit()
+                        return
 
         # Draw Background
         background_rect = background_image.get_rect()

@@ -18,7 +18,7 @@ def game_play(screen, screen_rect):
     number_of_laps = 2
 
     # Load images, assign to sprite classes
-    img = fileUtils.load_image('rider1-placeholder.png')
+    img = fileUtils.load_image('rider1_placeholder.png')
     Player.images = [img, pygame.transform.flip(img, 1, 0)]
 
     # decorate the game window
@@ -48,13 +48,13 @@ def game_play(screen, screen_rect):
 
     # Initialize Game Groups
     aliens = pygame.sprite.Group()
-    all = pygame.sprite.RenderUpdates()
-    lastalien = pygame.sprite.GroupSingle()
+    all_objects = pygame.sprite.RenderUpdates()
+    last_alien = pygame.sprite.GroupSingle()
 
     # assign default groups to each sprite class
-    Player.containers = all
-    Rider.containers = aliens, all, lastalien
-    TimeCounter.containers = all
+    Player.containers = all_objects
+    Rider.containers = aliens, all_objects, last_alien
+    TimeCounter.containers = all_objects
 
     # Create Some Starting Values
     clock = pygame.time.Clock()
@@ -66,7 +66,7 @@ def game_play(screen, screen_rect):
     game_over = GameOverScreen()
     pause_menu = PauseScreen()
     if pygame.font:
-        all.add(time_counter)
+        all_objects.add(time_counter)
 
     button_down = False
 
@@ -96,8 +96,8 @@ def game_play(screen, screen_rect):
                     and game_state == GameState.PLAYING:
                 button_down = True
 
-        all.clear(screen, background)
-        all.update()
+        all_objects.clear(screen, background)
+        all_objects.update()
         # player.update_state(game_state)
         time_counter.set_state(game_state)
         time_countdown.set_state(game_state)
@@ -137,7 +137,7 @@ def game_play(screen, screen_rect):
             time_countdown = CountDown()
             game_state = GameState.STARTING
 
-        dirty = all.draw(screen)
+        dirty = all_objects.draw(screen)
         pygame.display.update(dirty)
 
         clock.tick(30)

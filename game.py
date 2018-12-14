@@ -42,7 +42,7 @@ def splash_intro(screen):
         splash_ccc_rect = splash_ccc.get_rect()
         splash_ccc_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2)
 
-        splash_pygame = fileUtils.load_image("pygame-badge-SMA.png")
+        splash_pygame = fileUtils.load_image("pygame_badge_SMA.png")
         splash_pygame_rect = splash_pygame.get_rect()
         splash_pygame_rect.center = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2)
 
@@ -77,10 +77,13 @@ def main(window_style=0):
     main_menu(screen, screen_rect)
     #game_play(screen, screen_rect)
 
-    if pygame.mixer:
-        pygame.mixer.music.fadeout(1000)
-    pygame.time.wait(1000)
-    pygame.quit()
+    try:
+        if pygame.mixer:
+            pygame.mixer.music.fadeout(1000)
+        pygame.time.wait(1000)
+        pygame.quit()
+    except RuntimeError:
+        pass
 
 
 if __name__ == '__main__':

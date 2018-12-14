@@ -57,6 +57,11 @@ If you want to build this project, this is what you are going to need:
 * Pygame 1.9.4
 
 
+### How To Play
+
+* ​Press "Space" key repeatedly to gain speed.
+
+
 Who made this
 --------------
 
