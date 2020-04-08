@@ -7,7 +7,7 @@ from gameOverScreen import GameOverScreen, GameOverState
 from gameState import GameState
 from menu.pauseMenu import PauseScreen
 from player import Player
-from pumptrackWayonits import way_points_pump_track
+from pumptrackWayPoints import way_points_pump_track
 from rider import Rider
 from timeCounter import TimeCounter
 
